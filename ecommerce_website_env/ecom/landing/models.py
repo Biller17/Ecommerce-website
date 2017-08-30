@@ -76,7 +76,7 @@ class Cliente(models.Model):
         codigo_postal_envio = models.CharField(max_length = 15, blank = False, null = False)
 
         def __str__(self):
-            return self.user
+            return self.user.email
 
 
 class Pedido(models.Model):
@@ -91,7 +91,7 @@ class Pedido(models.Model):
 
 
         def __str__(self):
-            return self
+            return str(self.id)
 
 class Carrito(models.Model):
         productos = models.ManyToManyField(Producto)
@@ -99,4 +99,4 @@ class Carrito(models.Model):
         total = models.DecimalField(max_digits = 10, decimal_places = 2, default = 0.00)
 
         def __str__(self):
-            return self
+            return self.cliente.user.email
